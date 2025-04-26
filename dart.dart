@@ -1,40 +1,48 @@
+
 import 'dart:io';
 
 void main() {
-  print("📌 Personal Biodata Generator");
+  print("\n✨ Welcome to the Biodata Generator! ✨\n");
 
-  print("Enter your Name: ");
-  String name = stdin.readLineSync() ?? "";
+  
+  String getInput(String prompt) {
+    stdout.write('$prompt: ');
+    return stdin.readLineSync() ?? ''; 
+  }
+   String name = getInput("Enter your Full Name");
+   String age = getInput("Enter your Age");
+  String email = getInput("Enter your Email Address");
+  String phone = getInput("Enter your Phone Number");
+  String address = getInput("Enter your Current Address");
+  String education = getInput("Enter your Highest Education");
+  String occupation = getInput("Enter your Occupation");
+  String hobbies = getInput("Enter your Hobbies (separate with commas)");
+  String skills = getInput("Enter your Skills (separate with commas)");
+  String biodata = """
+  \n-------------------- Personal Biodata --------------------
 
-  print("Enter your Phone Number: ");
-  String phone = stdin.readLineSync() ?? "";
+  Name:        $name
+  Age:         $age
+  Email:       $email
+  Phone:       $phone
+  Address:     $address
 
-  print("Enter your Age: ");
-  int age = int.tryParse(stdin.readLineSync() ?? "0") ?? 0;
+  -------------------- Education & Profession --------------------
 
-  print("Enter your Height (in cm): ");
-  double height = double.tryParse(stdin.readLineSync() ?? "") ?? 0.0;
+  Education:   $education
+  Occupation:  $occupation
 
-  print("Enter your Weight (in kg): ");
-  double weight = double.tryParse(stdin.readLineSync() ?? "") ?? 0.0;
+  -------------------- Interests & Abilities --------------------
 
-  print("Enter your Address: ");
-  String address = stdin.readLineSync() ?? "";
+  Hobbies:     ${hobbies.split(',').map((h) => h.trim()).join(', ')}
+  Skills:      ${skills.split(',').map((s) => s.trim()).join(', ')}
 
-  print("Enter your Hobbies (comma-separated): ");
-  String hobbiesInput = stdin.readLineSync() ?? "";
-  List<String> hobbies = hobbiesInput.split(',').map((h) => h.trim()).toList();
+  ------------------------------------------------------------
+  """;
 
-  // Display Biodata
-  print("\n========================================");
-  print("            Personal Biodata          ");
-  print("========================================");
-  print("Name      : $name");
-  print("Phone No. : $phone");
-  print("Age       : $age years");
-  print("Height    : $height cm");
-  print("Weight    : $weight kg");
-  print("Address   : $address");
-  print("Hobbies   : ${hobbies.join(', ')}");
-  print("========================================");
+
+  print("\nYour Biodata:\n");
+  print(biodata);
+
+  print("\nThank you for using the Biodata Generator! 😊\n");
 }
